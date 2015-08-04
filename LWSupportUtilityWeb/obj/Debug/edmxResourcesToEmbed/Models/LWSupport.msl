@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LWSupportUtilityModelsStoreContainer" CdmEntityContainer="LWSupport">
+    <EntitySetMapping Name="tblLookupCategories">
+      <EntityTypeMapping TypeName="LWSupportUtility.Models.tblLookupCategory">
+        <MappingFragment StoreEntitySet="tblLookupCategory">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="iCategoryID" ColumnName="iCategoryID" />
+          <ScalarProperty Name="cCategoryName" ColumnName="cCategoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblLookupItems">
+      <EntityTypeMapping TypeName="LWSupportUtility.Models.tblLookupItem">
+        <MappingFragment StoreEntitySet="tblLookupItems">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="iLookupitemID" ColumnName="iLookupitemID" />
+          <ScalarProperty Name="cLookupItemname" ColumnName="cLookupItemname" />
+          <ScalarProperty Name="iLookupCatID" ColumnName="iLookupCatID" />
+          <ScalarProperty Name="dTimestamp" ColumnName="dTimestamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSecretQuestions">
+      <EntityTypeMapping TypeName="LWSupportUtility.Models.tblSecretQuestion">
+        <MappingFragment StoreEntitySet="tblSecretQuestion">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="iSecretQuestionID" ColumnName="iSecretQuestionID" />
+          <ScalarProperty Name="iLookupCatID" ColumnName="iLookupCatID" />
+          <ScalarProperty Name="iLookupItemID" ColumnName="iLookupItemID" />
+          <ScalarProperty Name="dTimestamp" ColumnName="dTimestamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUsers">
+      <EntityTypeMapping TypeName="LWSupportUtility.Models.tblUser">
+        <MappingFragment StoreEntitySet="tblUsers">
+          <ScalarProperty Name="iUserID" ColumnName="iUserID" />
+          <ScalarProperty Name="cUsername" ColumnName="cUsername" />
+          <ScalarProperty Name="cPassword" ColumnName="cPassword" />
+          <ScalarProperty Name="cFirstname" ColumnName="cFirstname" />
+          <ScalarProperty Name="cLastname" ColumnName="cLastname" />
+          <ScalarProperty Name="cEmail" ColumnName="cEmail" />
+          <ScalarProperty Name="cMobileno" ColumnName="cMobileno" />
+          <ScalarProperty Name="cPhone" ColumnName="cPhone" />
+          <ScalarProperty Name="iSecretQuestionID" ColumnName="iSecretQuestionID" />
+          <ScalarProperty Name="cSecretAnswer" ColumnName="cSecretAnswer" />
+          <ScalarProperty Name="dTimestamp" ColumnName="dTimestamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

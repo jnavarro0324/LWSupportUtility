@@ -1,0 +1,252 @@
+﻿<!DOCTYPE html />
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/Content/js/fullcalendar/fullcalendar.min.css">
+    <link href="~/Content/css/oneui.min.css" type="text/css" rel="Stylesheet"/>
+    <link href="~/Content/js/slick/slick.min.css" type="text/css" rel="Stylesheet"/>
+    <link href="~/Content/js/slick/slick-theme.min.css" type="text/css" rel="Stylesheet"/>
+    <link href="~/Content/js/datatables/jquery.dataTables.min.css" type="text/css" rel="Stylesheet"/>
+    <link href="~/Content/css/site.css" type="text/css" rel="Stylesheet"/>
+</head>
+<body>
+
+
+         @RenderBody()
+
+
+</div>
+
+@*<script src="~/Content/js/jquery-1.11.3.min.js" type="text/javascript"></script>*@
+
+@*<script src="~/Content/js/oneui.min.js" type="text/javascript"></script>*@
+
+<script src="~/Content/js/jquery.min.js" type="text/javascript"></script>
+<script src="~/Content/js/bootstrap.min.js" type="text/javascript"></script>
+
+<script src="~/Content/js/jquery-ui.min.js" type="text/javascript"></script>
+<script src="~/Content/js/fullcalendar/moment.min.js" type="text/javascript"></script>
+<script src="~/Content/js/fullcalendar/fullcalendar.min.js" type="text/javascript"></script>
+<script src="~/Content/js/fullcalendar/gcal.min.js" type="text/javascript"></script>
+
+
+<script src="~/Content/js/slick/slick.min.js" type="text/javascript"></script>
+
+<script type"text/javascript" src="~/Content/js/jquery-validation/jquery.validate.min.js"></script>
+<script type"text/javascript" src="~/Content/js/loginValidation.js"></script>
+
+<script src="~/Content/js/jquery.slimscroll.min.js"></script>
+<script src="~/Content/js/jquery.scrollLock.min.js"></script>
+<script src="~/Content/js/jquery.appear.min.js"></script>
+<script src="~/Content/js/jquery.countTo.min.js"></script>
+<script src="~/Content/js/jquery.placeholder.min.js"></script>
+<script src="~/Content/js/datatables/jquery.dataTables.min.js"></script>
+<script type"text/javascript" src="~/Content/js/app.js"></script>
+
+
+
+<script type="text/javascript">
+    var BaseCompCalendar = function () {
+        // Add new event in the event list
+        var addEvent = function () {
+            var $eventInput = jQuery('.js-add-event');
+            var $eventInputVal = '';
+
+            // When the add event form is submitted
+            jQuery('.js-form-add-event').on('submit', function () {
+                $eventInputVal = $eventInput.prop('value'); // Get input value
+
+                // Check if the user entered something
+                if ($eventInputVal) {
+                    // Add it to the events list
+                    jQuery('.js-events')
+                    .prepend('<li class="animated fadeInDown">' +
+                            jQuery('<div />').text($eventInputVal).html() +
+                            '</li>');
+
+                    // Clear input field
+                    $eventInput.prop('value', '');
+
+                    // Re-Init Events
+                    initEvents();
+                }
+
+                return false;
+            });
+        };
+
+        // Init drag and drop event functionality
+        var initEvents = function () {
+            jQuery('.js-events')
+            .find('li')
+            .each(function () {
+                var $event = jQuery(this);
+
+                // create an Event Object
+                var $eventObject = {
+                    title: jQuery.trim($event.text()),
+                    color: $event.css('background-color')
+                };
+
+                // store the Event Object in the DOM element so we can get to it later
+                jQuery(this).data('eventObject', $eventObject);
+
+                // make the event draggable using jQuery UI
+                jQuery(this).draggable({
+                    zIndex: 999,
+                    revert: true,
+                    revertDuration: 0
+                });
+            });
+        };
+
+        // Init FullCalendar
+        var initCalendar = function () {
+            var $date = new Date();
+            var $d = $date.getDate();
+            var $m = $date.getMonth();
+            var $y = $date.getFullYear();
+
+            jQuery('.js-calendar').fullCalendar({
+                firstDay: 1,
+                editable: true,
+                droppable: true,
+                header: {
+                    left: 'title',
+                    right: 'prev,next month,agendaWeek,agendaDay'
+                },
+                drop: function ($date, $allDay) { // this function is called when something is dropped
+                    // retrieve the dropped element's stored Event Object
+                    var $originalEventObject = jQuery(this).data('eventObject');
+
+                    // we need to copy it, so that multiple events don't have a reference to the same object
+                    var $copiedEventObject = jQuery.extend({}, $originalEventObject);
+
+                    // assign it the date that was reported
+                    $copiedEventObject.start = $date;
+
+                    // render the event on the calendar
+                    // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
+                    jQuery('.js-calendar').fullCalendar('renderEvent', $copiedEventObject, true);
+
+                    // remove the element from the "Draggable Events" list
+                    //jQuery(this).remove();
+                }
+            });
+        };
+
+        return {
+            init: function () {
+                // Add Event functionality
+                addEvent();
+
+                // FullCalendar, for more examples you can check out http://fullcalendar.io/
+                initEvents();
+                initCalendar();
+            }
+        };
+    } ();
+
+    // Initialize when page loads
+    jQuery(function () { BaseCompCalendar.init(); });
+
+
+    $(function () {
+        // Init page helpers (Slick Slider plugin)
+        App.initHelpers('slick');
+    });
+
+   
+
+</script>
+<script src="~/Content/js/base_tables_datatables.js"></script>
+<script>
+
+</script>
+<script>
+
+// Account Registration Validation
+    var BasePagesCreate = function () {
+        
+        var initValidationRegistration = function () {
+            jQuery('.js-validation-registration').validate({
+                errorClass: 'help-block text-right animated fadeInDown',
+                errorElement: 'div',
+                errorPlacement: function (error, e) {
+                    jQuery(e).parents('.form-group .form-material').append(error);
+                },
+                highlight: function (e) {
+                    jQuery(e).closest('.form-group').removeClass('has-error').addClass('has-error');
+                    jQuery(e).closest('.help-block').remove();
+                },
+                success: function (e) {
+                    jQuery(e).closest('.form-group').removeClass('has-error');
+                    jQuery(e).closest('.help-block').remove();
+                },
+                rules: {
+                    'cUsername': {
+                        required: true,
+                        minlength: 3
+                    },
+                    'cpassword': {
+                        required: true,
+                        minlength: 5
+                    },
+                    'cpassword2': {
+                        required: true,
+                        minlength: 5
+                    },
+                    'cfirstname': {
+                        required: true
+                    },
+                    'clastname': {
+                        required: true
+                    },
+                    'cemail': {
+                        required: true
+                    }
+                },
+                messages: {
+                    'cUsername': {
+                        required: 'Please enter a username',
+                        minlength: 'Your username must consist of at least 3 characters'
+                    },
+                    'cpassword': {
+                        required: 'Please provide a password',
+                        minlength: 'Your password must be at least 5 characters long'
+                    },
+                    'cpassword2': {
+                        required: 'Please provide a password',
+                        minlength: 'Your password must be at least 5 characters long'
+                    },
+                    'cfirstname': {
+                        required: 'Please provide your Firstname'
+                    },
+                    'clastname': {
+                        required: 'Please provide your Lastname'
+                    },
+                    'cemail': {
+                        required: 'Please provide a valid email address'
+
+                    }
+
+
+                }
+            });
+        };
+
+        return {
+            init: function () {
+                // Init Login Form Validation
+                initValidationRegistration();
+            }
+        };
+    } ();
+
+    // Initialize when page loads
+    jQuery(function () { BasePagesCreate.init(); });
+
+</script>
+
+</body>
+</html>

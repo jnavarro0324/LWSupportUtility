@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "LWSupportCalendar";
+}
+
+<div id="page-container" class="sidebar-l sidebar-mini sidebar-o side-scroll header-navbar-fixed">
+
+@Html.Partial("_Sidebar")
+
+@Html.Partial("_Header")
+<main id="main-container">
+<!-- Calendar and Events functionality (initialized in js/pages/base_comp_calendar.js), for more info and examples you can check out http://fullcalendar.io/ -->
+<div class="content bg-white">
+    <div class="row items-push">
+        <div class="col-md-4 col-md-push-8 col-lg-2 col-lg-push-10">
+            <!-- Event List -->
+            <ul class="js-events list list-events">
+                <li style="background-color: #fac5a5;">DONN</li>
+                <li style="background-color: #b5d0eb;">YUMI</li>
+                <li style="background-color: #faeab9;">IB</li>
+                <li style="background-color: #fac5a5;">ROWEL</li>
+                <li style="background-color: #c8e2b3;">PAO</li>
+                <li style="background-color: #b6d1ec;">SUPPORT</li>
+            </ul>
+            <div class="text-center text-muted">
+                <small><em><i class="fa fa-arrows"></i> Drag and drop events on the calendar</em></small>
+            </div>
+            <!-- END Event List -->
+        </div>
+        <div class="col-md-8 col-md-pull-4 col-lg-10 col-lg-pull-2">
+            <!-- Calendar Container -->
+            <div class="js-calendar">
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Calendar -->
+</main>
+</div>

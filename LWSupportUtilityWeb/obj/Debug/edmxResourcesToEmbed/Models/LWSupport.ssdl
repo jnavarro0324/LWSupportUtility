@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LWSupportUtility.Models.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="LWSupportUtilityModelsStoreContainer">
+    <EntitySet Name="tblLookupCategory" EntityType="LWSupportUtility.Models.Store.tblLookupCategory" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblLookupItems" EntityType="LWSupportUtility.Models.Store.tblLookupItems" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblSecretQuestion" EntityType="LWSupportUtility.Models.Store.tblSecretQuestion" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblUsers" EntityType="LWSupportUtility.Models.Store.tblUsers" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="tblLookupCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="iCategoryID" Type="int" Nullable="false" />
+    <Property Name="cCategoryName" Type="varchar" Nullable="false" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="tblLookupItems">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="iLookupitemID" Type="int" Nullable="false" />
+    <Property Name="cLookupItemname" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="iLookupCatID" Type="int" Nullable="false" />
+    <Property Name="dTimestamp" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblSecretQuestion">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="iSecretQuestionID" Type="int" Nullable="false" />
+    <Property Name="iLookupCatID" Type="int" Nullable="false" />
+    <Property Name="iLookupItemID" Type="int" Nullable="false" />
+    <Property Name="dTimestamp" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblUsers">
+    <Key>
+      <PropertyRef Name="iUserID" />
+    </Key>
+    <Property Name="iUserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="cUsername" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="cPassword" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="cFirstname" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="cLastname" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="cEmail" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="cMobileno" Type="varchar" MaxLength="50" />
+    <Property Name="cPhone" Type="varchar" MaxLength="50" />
+    <Property Name="iSecretQuestionID" Type="int" Nullable="false" />
+    <Property Name="cSecretAnswer" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="dTimestamp" Type="datetime" Nullable="false" />
+  </EntityType>
+</Schema>

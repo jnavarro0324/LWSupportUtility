@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "LWSupport Utility";
+}
+
+@Html.AntiForgeryToken()
+<main id="main-container">
+
+<div class="content overflow-hidden">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+            <div class="block block-themed animated fadeIn">
+                <div class="block-header bg-primary">
+                    <ul class="block-options">
+                        <li>
+                        <a href="#">Forgot Password?</a>
+                        </li>
+                    </ul>
+                <h3 class="block-title">LWSupport Utility</h3>
+                </div>
+                <div class="block-content block-content-full block-content-narrow">
+                    <h1 class="h2 font-w600 push-30-t push-5">Sign In</h1>
+                    <p>Welcome, please login.</p>
+                    <form class="js-validation-login form-horizontal push-30-t push-50" action="#" method="post" novalidate="novalidate">
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <div class="form-material form-material-primary floating">
+                                    <input class="form-control" type="text" id="cusername" name="cusername" placeholder="Username">
+                                        @*<label for="login-username">Username</label>*@
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <div class="form-material form-material-primary floating">
+                                    <input class="form-control" type="password" id="cpassword" name="cpassword" placeholder="Password">
+                                   @* <label for="login-password">Password</label>*@
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <label class="css-input switch switch-sm switch-primary">
+                                <input type="checkbox" id="login-remember-me" name="login-remember-me"><span></span> Remember Me?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12 col-sm-6 col-md-4">
+                                <button class="btn btn-block btn-primary" type="submit"><i class="si si-login pull-right"></i> Log in</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</main>
+
